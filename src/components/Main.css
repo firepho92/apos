@@ -1,0 +1,251 @@
+@font-face {
+	font-family: Segoe;
+	src: url("Segoe UI.ttf");
+}
+
+
+a {
+	text-decoration: none
+}
+
+.Customers {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh - 40px;
+	padding-bottom: 3em;
+}
+
+.CustomerWrapper {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+}
+
+
+.CustomerStatistics {
+	width: 30vw;
+	padding: 2em;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	border-radius: 5px;
+	flex: 0.65;
+	margin: 2em;
+}
+
+.Customer {
+	width: 30vw;
+	padding: 1.5em;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	border-radius: 5px;
+	flex: 0.7;
+	margin: 1.5em;
+	justify-content: center;
+	align-items: center;
+}
+
+.CustomerName {
+	display: flex;
+	font-size: 1.5em;
+	font-family: Segoe;
+	cursor: default;
+	justify-content: center;
+	align-items: flex-end
+}
+
+.CustomerInformation {
+	display: flex;
+	flex-direction: column;
+}
+
+.EditActive {
+	cursor: pointer;
+	color: #0078d4;
+}
+
+.EditInactive {
+	cursor: pointer;
+}
+
+.CustomerTextInput {
+	border-style: none;
+	background-color: #fff;
+	font-size: 1em;
+}
+
+.CustomerTextInput:focus {
+	outline: none;
+}
+
+.ProductName {
+	display: flex;
+	font-size: 1.5em;
+	font-family: Segoe;
+	cursor: default;
+	justify-content: center;
+	align-items: flex-end
+}
+
+.ProductInformation {
+	display: flex;
+	flex-direction: column;
+}
+
+.MenuButton {
+	position: fixed;
+	bottom: 1em;
+	left: 1em;
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 3px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	z-index: 1
+}
+
+.MenuItems {
+	display: flex;
+	flex-direction: column;
+}
+
+.MenuItem {
+	flex: 1;
+	background: #fff;
+	color: #000;
+	width: 100%;
+	transition: 0.2s;
+	padding: 0.5em;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+.MenuItemSelected {
+	flex: 1;
+	background: #fff;
+	color: #000;
+	width: 100%;
+	transition: 0.2s;
+	padding: 0.5em;
+	border: 0;
+	cursor: pointer;
+	border-left: 2px solid #0078d4;
+	outline: none
+}
+
+.MenuItem:hover {
+	background: #0078d4;
+	color: #fff;
+}
+
+.MenuItem:focus {
+	background: #fff;
+	color: #000;
+	border-left: 2px solid #0078d4;
+	outline: none;
+}
+
+.LandingPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.LandingPageImage {
+	opacity: 0.95;
+}
+
+.Customers {
+	padding: 1em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.Card {
+	height: 150px;
+	width: 300px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+	border-radius: 3px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	margin: 1rem;
+	cursor: pointer;
+}
+
+.CardContent {
+	display: flex;
+	flex: 3;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center
+}
+
+.CardMedia {
+	display: flex;
+	flex: 2;
+	justify-content: center;
+	align-items: center;
+}
+
+.InitialsAvatar {
+	display: flex;
+	height: 100px !important;
+	width: 100px !important;
+	border-radius: 50px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 50px
+}
+
+.CardDescriptionField {
+	color: rgba(0, 0, 0, 0.54);
+	font-size: 0.8em;
+	cursor: default;
+}
+
+.ProductsControl {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.ProductsControlPanel {
+	display: flex;
+	flex: 0.5;
+	margin: 1rem;
+	justify-content: center;
+	height: 500px;
+	transition: height 0.15s ease-out;
+}
+
+.ProductsControlTable {
+
+}
+
+.Management {
+	padding: 2em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.IncomingOutgoingCards {
+	display: flex;
+	flex: 0.2;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	border-radius: 5px;
+	padding: 2em 0 2em 0;
+}

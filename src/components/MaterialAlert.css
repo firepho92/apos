@@ -1,0 +1,23 @@
+.materialAlert {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	right: 2em;
+	bottom: 2em;
+	padding: 1em;
+	background-color: #202328;
+	z-index: 5;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	border-radius: 5px;
+	transform-origin: 50% 50%
+}
+
+.materialAlertTitle {
+	flex: 1;
+	color: #2882f9;
+}
+
+.materialAlertText {
+	flex: 1;
+	color: #fff;
+}
