@@ -38,10 +38,10 @@ class Management extends React.Component {
         {context => (
           <div className="Management">
             <div className="IncomingOutgoingCards">
+              <div className="IOCData">
+                
+              </div>
               <div style={{color: '#4CAF50', fontSize: 25}}>{this._calculateMovements(context.state.movements)}</div>
-            </div>
-            <div className="IncomingOutgoingCards">
-            <div style={{color: '#FF5722', fontSize: 25}}>{this._calculateMovements(context.state.payments)}</div>
             </div>
           </div>
         )}

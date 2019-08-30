@@ -54,7 +54,7 @@ class ContextProvider extends Component {
       },
       view: 'Inicio'
     }
-    this.server = 'http://192.168.100.4';
+    this.server = 'http://177.246.228.199:8000';
   }
 
   componentDidMount() {
@@ -89,7 +89,7 @@ class ContextProvider extends Component {
   }
 
   _setCustomers = () => {
-    axios.get('http://localhost:8000/customers')
+    axios.get(this.server + '/customers')
     .then(response => {
       if(response.data.length > 0) {
         let customers = response.data.map(customer => (
@@ -106,7 +106,7 @@ class ContextProvider extends Component {
   }
 
   _setProducts = () => {
-    axios.get('http://localhost:8000/products')
+    axios.get(this.server + '/products')
     .then(response => {
       this.setState({
         products: response.data
@@ -118,7 +118,7 @@ class ContextProvider extends Component {
   }
 
   _setMovements = (movementType) => {
-    axios.get('http://localhost:8000/sales?movementType=' + movementType)
+    axios.get(this.server + '/sales?movementType=' + movementType)
     .then(response => {
       this.setState({
         movements: response.data
@@ -130,7 +130,7 @@ class ContextProvider extends Component {
   }
 
   _setSales = () => {
-    axios.get('http://localhost:8000/sales?movementType=4')
+    axios.get(this.server + '/sales?movementType=4')
     .then(response => {
       this.setState({
         sales: response.data
@@ -142,7 +142,7 @@ class ContextProvider extends Component {
   }
 
   _setPayments = () => {
-    axios.get('http://localhost:8000/payments')
+    axios.get(this.server + '/payments')
     .then(response => {
       this.setState({
         payments: response.data

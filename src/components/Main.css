@@ -242,10 +242,16 @@ button::-moz-focus-inner {
 
 .IncomingOutgoingCards {
 	display: flex;
-	flex: 0.2;
+	flex: 0.85;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	border-radius: 5px;
 	padding: 2em 0 2em 0;
+}
+
+.IOCData {
+	display: flex;
+	flex-direction: column;
 }

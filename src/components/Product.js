@@ -76,33 +76,34 @@ class Product extends React.Component {
 		})
 	}
 
-	_onCostPriceChange = (e) => {
+	_onCostPriceChange = (e, a) => {
+		console.log(e.target.value + ' ' + a)
 		this.setState({
-			phone: e.target.value
+			cost_price: e.target.value
 		});
 	}
 
 	_onSellingPriceChange = (e) => {
 		this.setState({
-			street: e.target.value
+			selling_price: e.target.value
 		});
 	}
 
 	_onDescriptionChange = (e) => {
 		this.setState({
-			number: e.target.value
+			description: e.target.value
 		});
 	}
 
 	_onStockChange = (e) => {
 		this.setState({
-			postal_code: e.target.value
+			stock: e.target.value
 		});
 	}
 
 	_onCategoryChange = (e) => {
 		this.setState({
-			district: e.target.value
+			category: e.target.value
 		});
 	}
 
@@ -168,7 +169,7 @@ class Product extends React.Component {
 							</div>
               <hr style={{width: 80 + '%'}}/>
 		      		<div className="ProductInformation">
-		      			<div style={{display: 'flex', flexDirection: 'row'}}><div>Costo producción:$</div><input type="text" onChange={(e) => this._onCostPriceChange(e)} className="CustomerTextInput" style={this.state.edit ? {cursor: 'text'} : {cursor: 'default'}} value={this.state.cost_price} readOnly={this.state.edit ? false : true} /></div>
+		      			<div style={{display: 'flex', flexDirection: 'row'}}><div>Costo prod.:$</div><input type="text" onChange={(e) => this._onCostPriceChange(e)} className="CustomerTextInput" style={this.state.edit ? {cursor: 'text'} : {cursor: 'default'}} value={this.state.cost_price} readOnly={this.state.edit ? false : true} /></div>
 		      			<div style={{display: 'flex', flexDirection: 'row'}}><div>Precio venta:$</div><input type="text" onChange={(e) => this._onSellingPriceChange(e)} className="CustomerTextInput" style={this.state.edit ? {cursor: 'text'} : {cursor: 'default'}} value={this.state.selling_price} readOnly={this.state.edit ? false : true} /></div>
 			      		<div style={{display: 'flex', flexDirection: 'row'}}><div>Descripción:&nbsp;</div><input type="text" onChange={(e) => this._onDescriptionChange(e)} className="CustomerTextInput" style={this.state.edit ? {cursor: 'text'} : {cursor: 'default'}} value={this.state.description} readOnly={this.state.edit ? false : true} /></div>
 			      		<div style={{display: 'flex', flexDirection: 'row'}}><div>Stock:&nbsp;</div><input type="text" onChange={(e) => this._onStockChange(e)} className="CustomerTextInput" style={this.state.edit ? {cursor: 'text'} : {cursor: 'default'}} value={this.state.stock} readOnly={this.state.edit ? false : true} /></div>
