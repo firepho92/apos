@@ -54,7 +54,7 @@ class ContextProvider extends Component {
       },
       view: 'Inicio'
     }
-    this.server = 'http://177.246.228.199:8000';
+    this.server = 'http://localhost:8000';
   }
 
   componentDidMount() {

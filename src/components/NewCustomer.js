@@ -126,7 +126,7 @@ class NewCustomer extends React.Component {
 
   handleSubmit = (e, _showAlert, _setCustomers) => {
     e.preventDefault();
-    axios.post('http://177.246.228.199:8000/customers', {...this.state})
+    axios.post('http://localhost:8000/customers', {...this.state})
     .then(response => {
       console.log(response)
       _showAlert('Creado correctamente', 'Notificación');

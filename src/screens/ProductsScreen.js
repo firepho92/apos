@@ -43,7 +43,7 @@ class ProductsScreen extends React.Component {
   }
 
   _setProducts = () => {
-    axios.get('http://177.246.228.199:8000/products')
+    axios.get('http://localhost:8000/products')
     .then(response => {
       this.setState({
         products: response.data
