@@ -176,7 +176,39 @@ class Customer extends React.Component {
 		});
 	}
 
-	_onQRChange = () => {
+	_onQRChange = (_setCustomers, _showAlert) => {
+		axios.put('http://localhost:8000/customers', 
+			{
+				customer_id: this.state.customer_id,
+				owner: this.state.owner,
+				customer_name: this.state.customer_name,
+				phone: this.state.phone,
+				street: this.state.street,
+				number: this.state.number,
+				postal_code: this.state.postal_code,
+				district: this.state.district,
+				county: this.state.county,
+				state: this.state.state,
+				email: this.state.email,
+				RFC: this.state.RFC,
+				business_name: this.state.business_name,
+				latitude: this.state.latitude,
+				longitude: this.state.longitude,
+				type: this.state.type,
+				notes: this.state.notes,
+				created: this.state.created,
+				updated: this.state.updated,
+				qr: this.state.qr === 0 ? 1 : 0,
+				status: this.state.status
+		})
+		.then(response => {
+			_setCustomers();
+			_showAlert('Cliente actualizado correctamente.', 'Éxito.');
+		})
+		.catch(error => {
+			_showAlert('No se puede conectar con el servidor.', 'Error.')
+		});
+		/*
 		if(this.state.qr === 0){
 			this.setState({
 				qr: 1
@@ -185,7 +217,7 @@ class Customer extends React.Component {
 			this.setState({
 				qr: 0
 			})
-		}
+		}*/
 	}
 
 	_onStatusChange = (_setCustomers, _showAlert) => {
@@ -295,7 +327,7 @@ class Customer extends React.Component {
 											onChange={() => this._onStatusChange(context._setCustomers, context._showAlert)}
 										/>
 									</div>
-									{this.state.qr === 0 ? <PrimaryButton data-automation-id="test" checked={false} text="Generar QR" onClick={this._onQRChange} allowDisabledFocus={true} /> : null}
+									{this.state.qr === 0 ? <PrimaryButton data-automation-id="test" checked={false} text="Generar QR" onClick={() => this._onQRChange(context._setCustomers, context._showAlert)} allowDisabledFocus={true} /> : null}
 								</div>
 							</div>
 							<CustomerStatistics movements={this.state.movements} balance={this._handleBalance}/>
