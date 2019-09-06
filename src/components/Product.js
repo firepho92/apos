@@ -117,7 +117,7 @@ class Product extends React.Component {
 				status: 0
 			}, this._onSubmit(_setCustomers, _showAlert));
     }*/
-    axios.put('http://localhost:8000/products', 
+    axios.put('http://192.168.1.127:8000/products', 
 			{
 				product_id: this.state.product_id,
 				cost_price: this.state.cost_price,
@@ -137,7 +137,7 @@ class Product extends React.Component {
 	}
 
 	_onSubmit = (_showAlert) => {
-		axios.put('http://localhost:8000/products', 
+		axios.put('http://192.168.1.125:8000/products', 
 			{
 				product_id: this.state.product_id,
         cost_price: this.state.cost_price,

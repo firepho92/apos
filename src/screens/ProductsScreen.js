@@ -6,6 +6,7 @@ import Products from '../components/Products';
 import NewProduct from '../components/NewProduct';
 import Product from '../components/Product';
 import ProductsControl from '../components/ProductsControl';
+import StockAdd from '../components/StockAdd';
 import AppContext from '../context/AppContext';
 import axios from 'axios';
 
@@ -94,6 +95,14 @@ class ProductsScreen extends React.Component {
         },
         onClick: () => this._setView(3)
       },
+      {
+        key: 'agregar',
+        name: 'Agregar',
+        iconProps: {
+          iconName: 'Add'
+        },
+        onClick: () => this._setView(4)
+      },
     ];
   };
 
@@ -121,6 +130,7 @@ class ProductsScreen extends React.Component {
             { this.state.view === 1 ? <NewProduct _setView={this._setView} _setProducts={this._setProducts} _contextSetProducts={context._setProducts}/> : null }
             { this.state.view === 2 ? <Product _setView={this._setView} product={this.state.product} _setProducts={this._setProducts} sales={context.state.sales.filter(sale => sale.product === this.state.product.product_id)}/> : null }
             { this.state.view === 3 ? <ProductsControl _showAlert={context._showAlert} customers={context.state.customers} products={context.state.products}/> : null }
+            { this.state.view === 4 ? <StockAdd _showAlert={context._showAlert} customers={context.state.customers} products={context.state.products}/> : null }
           </div>          
       	)}
       </AppContext.Consumer>
