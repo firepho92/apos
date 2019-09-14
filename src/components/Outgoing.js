@@ -28,7 +28,7 @@ class Outgoing extends React.Component {
   }
 
   _handleSubmit = () => {
-    axios.post('http://localhost:8000/payments', {ammount: this.state.ammount, date: new Date(), description: this.state.description})
+    axios.post('http://177.246.228.199:8000/payments', {ammount: this.state.ammount, date: new Date(), description: this.state.description})
     .then(response => {
       console.log(response.data);
     })

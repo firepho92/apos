@@ -26,7 +26,7 @@ class NewProduct extends React.Component {
   }
 
   _getCategories = () => {
-    axios.get('http://localhost:8000/categories')
+    axios.get('http://177.246.228.199:8000/categories')
     .then(response => {
       console.log(this._formatCategories(response.data));
       this.setState({
@@ -86,7 +86,7 @@ class NewProduct extends React.Component {
     e.preventDefault();
     if(this.state.cost_price === '')
       this.setState({cost_price: 0})
-    axios.post('http://localhost:8000/products', {...this.state})
+    axios.post('http://177.246.228.199:8000/products', {...this.state})
     .then(response => {
       console.log(response)
       _showAlert('Creado correctamente', 'Notificación');

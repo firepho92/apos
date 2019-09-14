@@ -74,7 +74,7 @@ class Customer extends React.Component {
 	}
 
 	_setMovements = () => {
-		axios.get('http://localhost:8000/sales?customer=' + this.props.customer.customer_id)
+		axios.get('http://177.246.228.199:8000/sales?customer=' + this.props.customer.customer_id)
 		.then(response => {
 			this.setState({
 				movements: response.data
@@ -86,7 +86,7 @@ class Customer extends React.Component {
 	}
 
 	_setDeposits = () => {
-		axios.get('http://localhost:8000/deposits?customer=' + this.props.customer.customer_id)
+		axios.get('http://177.246.228.199:8000/deposits?customer=' + this.props.customer.customer_id)
 		.then(response => {
 			this.setState({
 				deposits: response.data
@@ -255,7 +255,7 @@ class Customer extends React.Component {
 	}
 
 	_onSubmit = (_setCustomers, _showAlert) => {
-		axios.put('http://localhost:8000/customers', 
+		axios.put('http://177.246.228.199:8000/customers', 
 			{
 				customer_id: this.state.customer_id,
 				owner: this.state.owner,

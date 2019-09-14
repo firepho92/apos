@@ -54,7 +54,7 @@ class ContextProvider extends Component {
       },
       view: 'Inicio'
     }
-    this.server = 'http://192.168.1.125:8000';
+    this.server = 'http://177.246.228.199:8000';
   }
 
   componentDidMount() {
@@ -108,6 +108,7 @@ class ContextProvider extends Component {
   _setProducts = () => {
     axios.get(this.server + '/products')
     .then(response => {
+      console.log(response.data);
       this.setState({
         products: response.data
       })

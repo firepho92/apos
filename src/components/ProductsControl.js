@@ -28,7 +28,6 @@ class ProductsControl extends React.Component {
       IVA: 0,
       cash: 0,
       movementType: null,
-      sale_type: 0,
       description: '',
       options: [{key: 1, text: 'Merma'}, {key:2, text: 'Prueba de control'}, {key: 3, text: 'Cortesía'}, {key: 4, text: 'Venta'}, {key:5, text: 'Consumo personal'}],
       customers: [],
@@ -41,7 +40,6 @@ class ProductsControl extends React.Component {
         price: false,
         IVA: false,
         cash: false,
-        sale_type: false,
         description: false,
       }
     }
@@ -102,7 +100,6 @@ class ProductsControl extends React.Component {
             price: false,
             IVA: false,
             cash: false,
-            sale_type: false,
             description: true
           }
         });
@@ -116,7 +113,6 @@ class ProductsControl extends React.Component {
             price: false,
             IVA: false,
             cash: false,
-            sale_type: false,
             description: true
           }
         });
@@ -130,7 +126,6 @@ class ProductsControl extends React.Component {
             price: false,
             IVA: false,
             cash: false,
-            sale_type: false,
             description: true
           }
         });
@@ -144,7 +139,6 @@ class ProductsControl extends React.Component {
             price: true,
             IVA: true,
             cash: true,
-            sale_type: true,
             description: true
           }
         });
@@ -157,7 +151,6 @@ class ProductsControl extends React.Component {
             ammount: true,
             IVA: false,
             cash: false,
-            sale_type: false,
             description: true
           }
         });
@@ -165,12 +158,6 @@ class ProductsControl extends React.Component {
       default:
         break;
     }
-  }
-
-  _onSaleTypeChange = (e, sale_type) => {
-    this.setState({
-      sale_type: sale_type.key
-    });
   }
 
   _onDescriptionChange = (e, description) => {
@@ -249,7 +236,6 @@ class ProductsControl extends React.Component {
                 cash={this.state.cash} _onCashChange={this._onCashChange}
                 IVA={this.state.IVA} _onIVAChange={this._onIVAChange}
                 movementType={this.state.movementType} _onMovementTypeChange={this._onMovementTypeChange}
-                sale_type={this.state.sale_type} _onSaleTypeChange={this._onSaleTypeChange}
                 description={this.state.description} _onDescriptionChange={this._onDescriptionChange}
                 options={this.state.options}
                 textFields={this.state.textFields}
@@ -284,17 +270,7 @@ function AddMovementPanel(props) {
   }
 
   const _handleSubmit = async () => {
-    console.log(props.sale_type + ' ' + props.movementType);
-    if (props.sale_type === 0 && props.movementType === 4) {
-      axios.post('http://localhost:8000/deposits', {deposit_date: new Date(), payment_type: 0, customer: props.customer, ammount: _getTotal()})
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    }
-    axios.post('http://localhost:8000/sales', {movement_date: new Date(), customer: props.customer, person: props.person, product: props.product, ammount: props.ammount, selling_price: props.selling_price, cost_price: props.cost_price, IVA: props.IVA, cash:props.cash, movementType: props.movementType, sale_type: props.sale_type, description: props.description})
+    axios.post('http://177.246.228.199:8000/sales', {movement_date: new Date(), customer: props.customer, person: props.person, product: props.product, ammount: props.ammount, selling_price: props.selling_price, cost_price: props.cost_price, IVA: props.IVA, cash:props.cash, movementType: props.movementType, description: props.description})
     .then(response => {
       console.log(response);
       props._onCustomerChange(null);
@@ -334,7 +310,6 @@ function AddMovementPanel(props) {
               {props.textFields.ammount ? <TextField label="Unidades" value={props.ammount} onChange={props._onAmmountChange} styles={{ fieldGroup: { width: 300 } }} autoComplete="off" type="number"/> : null}
               {props.textFields.price ? <TextField label="Precio" value={props.selling_price} onChange={props._onPriceChange} styles={{fieldGroup: {width: 300} }} autoComplete="off" type="number"/> : null}
               {props.textFields.IVA ? <Dropdown label="IVA" selectedKey={props.IVA ? props.IVA : undefined} onChange={props._onIVAChange} placeholder="Selecciona..." options={[{ key: 0, text: 'Sin IVA' }, { key: 1, text: 'Con IVA' },]} styles={{ dropdown: { width: 300 } }} required/> : null}
-              {props.textFields.sale_type ? <Dropdown label="Tipo de venta" selectedKey={props.sale_type ? props.sale_type : undefined} onChange={props._onSaleTypeChange} placeholder="Selecciona..." options={[{ key: 0, text: 'Contado' }, { key: 1, text: 'Consignación' },]} styles={{ dropdown: { width: 300 } }}/> : null}
               {props.textFields.description ? <TextField label="Descripción" value={props.description} onChange={props._onDescriptionChange} styles={{ fieldGroup: { width: 300 } }}/> : null}
               {props.textFields.IVA ? <TextField label="Total: " value={_getTotal()} onChange={props._onDescriptionChange} styles={{ fieldGroup: { width: 300 } }} readOnly={true}/> : null}
               <PrimaryButton onClick={() => _handleSubmit()} style={{marginTop: '2em'}} disabled={false} text="Agregar" type="submit" allowDisabledFocus={true}/>
@@ -361,7 +336,6 @@ class ProductsControlHistory extends React.Component {
         price: false,
         IVA: false,
         cash: false,
-        sale_type: false,
         description: false,
       }
     }
@@ -415,7 +389,6 @@ class ProductsControlHistory extends React.Component {
             price: false,
             IVA: false,
             cash: false,
-            sale_type: false,
             description: true
           }
         });
@@ -430,7 +403,6 @@ class ProductsControlHistory extends React.Component {
             price: false,
             IVA: false,
             cash: false,
-            sale_type: false,
             description: true
           }
         });
@@ -445,7 +417,6 @@ class ProductsControlHistory extends React.Component {
             price: false,
             IVA: false,
             cash: false,
-            sale_type: false,
             description: true
           }
         });
@@ -460,7 +431,6 @@ class ProductsControlHistory extends React.Component {
             price: true,
             IVA: true,
             cash: true,
-            sale_type: true,
             description: true
           }
         });
@@ -474,7 +444,6 @@ class ProductsControlHistory extends React.Component {
             ammount: true,
             IVA: false,
             cash: false,
-            sale_type: false,
             description: true
           }
         });
@@ -502,7 +471,6 @@ class ProductsControlHistory extends React.Component {
                       {this.state.fields.price ? <TableCell align="right">Precio de venta&nbsp;</TableCell> : null}
                       <TableCell align="right">Cantidad&nbsp;</TableCell>
                       {this.state.fields.IVA ? <TableCell align="right">IVA&nbsp;</TableCell> : null}
-                      {this.state.fields.sale_type ? <TableCell align="right">Tipo de venta&nbsp;</TableCell> : null}
                       <TableCell align="right">Descripción&nbsp;</TableCell>
                       <TableCell align="right">Personal&nbsp;</TableCell>
                     </TableRow>
@@ -516,7 +484,6 @@ class ProductsControlHistory extends React.Component {
                         {this.state.fields.price ? <TableCell align="right">${movement.selling_price}</TableCell> : null}
                         <TableCell align="right">{movement.ammount}</TableCell>
                         {this.state.fields.IVA ? <TableCell align="right">{movement.IVA === 0 ? 'No' : 'Si'}</TableCell> : null}
-                        {this.state.fields.sale_type ? <TableCell align="right">{movement.sale_type === 0 ? 'Contado' : 'Consignación'}</TableCell> : null}
                         <TableCell align="right">{movement.description}</TableCell>
                         <TableCell align="right">{movement.personal_name}</TableCell>
                       </TableRow>

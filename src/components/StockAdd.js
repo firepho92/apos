@@ -1,17 +1,8 @@
 import React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import AppContext from '../context/AppContext';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import { ComboBox } from 'office-ui-fabric-react/lib/index';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import moment from 'moment';
 import axios from 'axios';
@@ -199,7 +190,7 @@ function AddMovementPanel(props) {
 
   const _handleSubmit = async () => {
     console.log(props.sale_type + ' ' + props.movementType);
-    axios.post('http://192.168.1.125:8000/payments', {ammount: 0, date: new Date(), description: props.description, product: props.product, quantity: props.quantity, price: props.price})
+    axios.post('http://177.246.228.199:8000/payments', {ammount: 0, date: new Date(), description: props.description, product: props.product, quantity: props.quantity, price: props.price})
     .then(response => {
       console.log(response);
     })
@@ -207,7 +198,7 @@ function AddMovementPanel(props) {
       console.log(error);
     });
     if (props.sale_type === 0 && props.movementType === 4) {
-      axios.post('http://192.168.1.125:8000/deposits', {deposit_date: new Date(), payment_type: 0, customer: props.customer, ammount: _getTotal()})
+      axios.post('http://177.246.228.199:8000/deposits', {deposit_date: new Date(), payment_type: 0, customer: props.customer, ammount: _getTotal()})
       .then(response => {
         console.log(response);
       })
@@ -215,7 +206,7 @@ function AddMovementPanel(props) {
         console.error(error);
       });
     }
-    axios.post('http://localhost:8000/sales', {movement_date: new Date(), customer: props.customer, person: props.person, product: props.product, ammount: props.ammount, selling_price: props.selling_price, cost_price: props.cost_price, IVA: props.IVA, cash:props.cash, movementType: props.movementType, sale_type: props.sale_type, description: props.description})
+    axios.post('http://177.246.228.199:8000/sales', {movement_date: new Date(), customer: props.customer, person: props.person, product: props.product, ammount: props.ammount, selling_price: props.selling_price, cost_price: props.cost_price, IVA: props.IVA, cash:props.cash, movementType: props.movementType, sale_type: props.sale_type, description: props.description})
     .then(response => {
       console.log(response);
       props._onCustomerChange(null);
@@ -227,7 +218,7 @@ function AddMovementPanel(props) {
     .catch(error => {
       console.log(error);
     });
-    var product = await axios.put('http://localhost:8000/products/stock', {product: props.product, ammount: props.ammount});
+    var product = await axios.put('http://177.246.228.199:8000/products/stock', {product: props.product, ammount: props.ammount});
     console.log(product);
   }
 

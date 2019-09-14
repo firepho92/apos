@@ -7,13 +7,47 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import Fuse from 'fuse.js';
 import axios from 'axios';
 
 class Products extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      search: ''
+    };
+    this.options = {
+      shouldSort: true,
+      threshold: 0.6,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        "product_name",
+      ]
+    };
+  }
 
   _handleProductClick = (product) => {
     this.props._setProduct(product)
     this.props._setView(2);
+  }
+
+  _products = (products) => {
+    if(this.state.search.length > 0 && products.length > 0) {
+      let fuse = new Fuse(products, this.options);
+      var result = fuse.search(this.state.search);
+      return result;
+    }
+    return products;
+  }
+
+  _onChangeSearch = (e) => {
+    this.setState({
+      search: e.target.value
+    });
   }
 
   render() {
@@ -34,7 +68,7 @@ class Products extends React.Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {this.props.products.map(product => (
+                  {this._products(context.state.products).map(product => (
                     <TableRow hover key={product.product_id} onClick={() => this._handleProductClick(product)} style={{cursor: 'pointer'}}>
                       <TableCell component="th" scope="row">{product.product_name}</TableCell>
                       <TableCell align="right">${product.cost_price}</TableCell>
@@ -47,6 +81,15 @@ class Products extends React.Component {
                 </TableBody>
               </Table>
             </Paper>
+            <div className="CustomersSearchBox">
+              <TextField
+                className="input"
+                label="Búsqueda"
+                value={this.state.search}
+                onChange={this._onChangeSearch}
+                styles={{ fieldGroup: { width: 300 } }}
+              />
+            </div> 
             {/*<Paper style={{marginTop: 1 + 'em', display: 'flexbox', flexDirection: 'row'}}>
               <ProductsStatistics sales={this.props.sales}/>
                   </Paper>*/}

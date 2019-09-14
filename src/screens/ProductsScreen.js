@@ -34,25 +34,7 @@ class ProductsScreen extends React.Component {
     this.state = {
       view: 0,
       product: null,
-      products: [],
-      filteredProducts: []
     }
-  }
-
-  componentDidMount() {
-    this._setProducts();
-  }
-
-  _setProducts = () => {
-    axios.get('http://localhost:8000/products')
-    .then(response => {
-      this.setState({
-        products: response.data
-      });
-    })
-    .catch(error => {
-      console.log(error);
-    });
   }
 
   _setView = (view) => {

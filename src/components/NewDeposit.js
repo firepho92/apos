@@ -12,6 +12,7 @@ export default class NewDeposit extends Component {
       customer: undefined,
       opacity: 0,
       paymentType: undefined,
+      saleType: undefined,
       amount: 0
     }
   }
@@ -52,6 +53,12 @@ export default class NewDeposit extends Component {
       paymentType: paymentType.key
     })
   }
+  
+  _onSaleTypeChange = (e, saleType) => {
+    this.setState({
+      saleType: saleType.key
+    })
+  }
 
   _onAmountChange = (e, amount) => {
     this.setState({
@@ -60,7 +67,7 @@ export default class NewDeposit extends Component {
   }
 
   _handleSubmit = () => {
-    axios.post('http://localhost:8000/deposits', {deposit_date: new Date(), payment_type: this.state.paymentType, customer: this.state.customer, ammount: this.state.amount})
+    axios.post('http://177.246.228.199:8000/deposits', {deposit_date: new Date(), payment_type: this.state.paymentType, customer: this.state.customer, ammount: this.state.amount})
     .then(response => {
       this.props._showAlert('Agregado correctamente', 'Notificación');
       this.setState({
@@ -81,6 +88,7 @@ export default class NewDeposit extends Component {
         <Paper style={{...styles.panel, opacity: this.state.opacity}}>
           <Dropdown label="Cliente" selectedKey={this.state.customer ? this.state.customer : undefined} onChange={this._onCustomerChange} placeholder="Selecciona..." options={this._getCustomers()} styles={{ dropdown: { width: 300 } }}/>
           <Dropdown label="Tipo de pago" selectedKey={this.state.paymentType ? this.state.paymentType : undefined} onChange={this._onPaymentTypeChange} placeholder="Selecciona..." options={[{key: 0, text: 'Efectivo'}, {key: 1, text: 'Depósito'}]} styles={{ dropdown: { width: 300 } }}/>
+          <Dropdown label="Tipo de venta" selectedKey={this.state.saleType ? this.state.saleType : undefined} onChange={this._onPaymentTypeChange} placeholder="Selecciona..." options={[{key: 0, text: 'Consignación'}, {key: 1, text: 'Pago'}]} styles={{ dropdown: { width: 300 } }}/>
           <TextField label="Cantidad" value={this.state.amount} onChange={this._onAmountChange} styles={{ fieldGroup: { width: 300 } }} type="number" autoComplete="off" required/>
           <PrimaryButton onClick={this._handleSubmit} style={{marginTop: '2em'}} disabled={false} text="Agregar" type="submit" allowDisabledFocus={true}/>
         </Paper>

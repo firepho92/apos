@@ -34,8 +34,11 @@ class Authentication extends React.Component {
 		.then(response => {
 			if(response.data.length > 0) {
 				console.log(response.data[0])
-				_setUser(response.data[0])
-				
+				if(response.data[0].administrator === 1) {
+					_setUser(response.data[0])
+				} else {
+					_showAlert('Sin acceso', 'Alerta')
+				}
 			} else {
 				_showAlert('Usuario o contraseña no encontrados', 'Alerta')
 			}
